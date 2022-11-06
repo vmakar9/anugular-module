@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {EpisodeService} from "../../services/episode.service";
 import {IEpisode} from "../../interfaces/episode.interface";
+import {ActivatedRoute} from "@angular/router";
+import {map} from "rxjs";
+import {ApyPayload} from "../../interfaces/api.interface";
 
 @Component({
   selector: 'app-episodes',
@@ -9,12 +12,19 @@ import {IEpisode} from "../../interfaces/episode.interface";
 })
 export class EpisodesComponent implements OnInit {
 
-  episodes:IEpisode[]
-
-  constructor(private episodeService:EpisodeService) { }
-
-  ngOnInit(): void {
-    this.episodeService.getEpisodes().subscribe((data)=>this.episodes=data)
+  episodes: IEpisode[]
+  count:number
+  constructor(private activatedRoute: ActivatedRoute) {
   }
 
+  ngOnInit(): void {
+    this.activatedRoute.data.pipe(
+      map(value => value['results'] as ApyPayload<IEpisode>)
+    ).subscribe((value) =>{
+      this.count = value.info.count
+      this.episodes = value.results
+    })
+  }
 }
+
+

@@ -1,1 +1,5 @@
 <app-episode *ngFor="let episode of episodes" [episode]="episode"></app-episode>
+<mat-paginator [length]="3"
+               [pageSize]="10"
+               aria-label="Select page">
+</mat-paginator>

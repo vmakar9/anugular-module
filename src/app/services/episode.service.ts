@@ -12,8 +12,8 @@ export class EpisodeService {
 
   constructor(private httpClient:HttpClient) { }
 
-  getEpisodes(){
-    return this.httpClient.get<ApyPayload<IEpisode>>(urls.episodes).pipe(
+  getEpisodes(page:number){
+    return this.httpClient.get<ApyPayload<IEpisode>>(urls.episodes,{params:{page}}).pipe(
       map((res)=>res.results)
     )
   }

@@ -9,6 +9,7 @@ import { EpisodesComponent } from './components/episodes/episodes.component';
 import { EpisodeComponent } from './components/episode/episode.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     MatToolbarModule,
     BrowserAnimationsModule,
+    MatPaginatorModule,
 
   ],
   providers: [],

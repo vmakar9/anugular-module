@@ -12,7 +12,7 @@ export class EpisodeService {
 
   constructor(private httpClient:HttpClient) { }
 
-  getEpisodes(page:number){
+  getEpisodes(page=1){
     return this.httpClient.get<ApyPayload<IEpisode>>(urls.episodes,{params:{page}}).pipe(
       map((res)=>res.results)
     )

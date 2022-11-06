@@ -7,7 +7,7 @@ import {EpisodesResolver} from "./services/resolvers/episodes.resolver";
 const routes: Routes = [
   {path:'',component:LayoutComponent,children:[
       {path:'',redirectTo:'episode',pathMatch:'full'},
-      {path:'episode',resolve:{data:EpisodesResolver},component:EpisodesComponent}
+      {path:'episode',runGuardsAndResolvers:'pathParamsOrQueryParamsChange',resolve:{results:EpisodesResolver},component:EpisodesComponent}
     ]}
 ];
 

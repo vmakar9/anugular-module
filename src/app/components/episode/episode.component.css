@@ -1,0 +1,11 @@
+.all div{
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.info{
+ justify-content: center;
+  border: maroon 5px inset;
+}

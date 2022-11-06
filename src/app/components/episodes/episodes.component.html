@@ -1,5 +1,8 @@
-<app-episode *ngFor="let episode of episodes" [episode]="episode"></app-episode>
-<mat-paginator [length]="count"
-               [pageSize]="17"
-               aria-label="Select page">
-</mat-paginator>
+<div *ngIf="episodes.results">
+  <app-episode *ngFor="let episod of episodes.results" [episod]="episod"></app-episode>
+</div>
+<ul class="pagination" *ngIf="pages">
+  <li *ngFor="let p of pages" [ngClass]="{'active':(p===currentpage)}">
+    <button (click)="getEpisodes(p)">{{p}}</button>
+  </li>
+</ul>

@@ -9,7 +9,7 @@ import {IEpisode} from "../../interfaces/episode.interface";
 export class EpisodeComponent implements OnInit {
 
   @Input()
-  episode:IEpisode
+  episod:IEpisode
 
   constructor() { }
 

@@ -1,39 +1,44 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {EpisodeService} from "../../services/episode.service";
 import {IEpisode} from "../../interfaces/episode.interface";
 import {ActivatedRoute, Router, Routes} from "@angular/router";
-import {map} from "rxjs";
-import {ApyPayload} from "../../interfaces/api.interface";
-import {MatPaginator} from "@angular/material/paginator";
+import {EpisodeResponse} from "../../interfaces/episode.response";
+
 
 @Component({
   selector: 'app-episodes',
   templateUrl: './episodes.component.html',
   styleUrls: ['./episodes.component.css']
 })
-export class EpisodesComponent implements OnInit, AfterViewInit {
+export class EpisodesComponent implements OnInit {
 
-  episodes: IEpisode[]
-  count:number
+  episodes:EpisodeResponse
+  pages:number[]
+  currentpage=1
+  searchTerm=""
 
-  @ViewChild(MatPaginator)
-  paginator:MatPaginator
-  constructor(private activatedRoute: ActivatedRoute,private router:Router) {
+  constructor(private activatedRoute: ActivatedRoute,private episodeService:EpisodeService) {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.data.pipe(
-      map(value => value['results'] as ApyPayload<IEpisode>)
-    ).subscribe((value) =>{
-      this.count = value.info.pages
-      this.episodes = value.results
-    })
+   this.activatedRoute.queryParams.subscribe(params=>{
+    this.getEpisodes(this.currentpage)
+   })
   }
 
-  ngAfterViewInit(): void {
-    this.paginator.page.subscribe((page)=>{
-       this.router.navigate([],{queryParams:{page:page.pageIndex+1}})
+  getEpisodes(page=1):void{
+    this.episodeService.getEpisodes(page,this.searchTerm).subscribe(episodes=>{
+      this.episodes = episodes
+      this.fillInPageArray(episodes.info.pages)
+      this.currentpage = page
     })
+  }
+  fillInPageArray(total: number): void {
+    this.pages = [] as number[];
+
+    for(let counter:number = 1; counter<=total; counter++) {
+      this.pages.push(counter);
+    }
   }
 }
 

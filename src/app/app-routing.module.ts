@@ -5,7 +5,6 @@ import {EpisodesComponent} from "./components/episodes/episodes.component";
 
 const routes: Routes = [
   {path:'',component:LayoutComponent,children:[
-      {path:'',redirectTo:'episode',pathMatch:'full'},
       {path:'episode',component:EpisodesComponent}
     ]}
 ];

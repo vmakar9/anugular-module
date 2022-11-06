@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {map, Observable} from "rxjs";
 import {IEpisode} from "../interfaces/episode.interface";
 import {urls} from "../urls/urls";
+import {ApyPayload} from "../interfaces/api.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,9 @@ export class EpisodeService {
 
   constructor(private httpClient:HttpClient) { }
 
-  getAll():Observable<IEpisode[]>{
-    return this.httpClient.get<IEpisode[]>(urls.episodes)
+  getEpisodes(){
+    return this.httpClient.get<ApyPayload<IEpisode>>(urls.episodes).pipe(
+      map((res)=>res.results)
+    )
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {IEpisode} from "../../interfaces/episode.interface";
 import {EpisodeService} from "../../services/episode.service";
+import {IEpisode} from "../../interfaces/episode.interface";
 
 @Component({
   selector: 'app-episodes',
@@ -11,17 +11,10 @@ export class EpisodesComponent implements OnInit {
 
   episodes:IEpisode[]
 
-
   constructor(private episodeService:EpisodeService) { }
 
   ngOnInit(): void {
-    this.episodeService.getAll().subscribe(value => {
-      // @ts-ignore
-      this.episodes =value?.results.map((item)=>{
-        return item
-      })
-    })
-    console.log(this.episodes)
+    this.episodeService.getEpisodes().subscribe((data)=>this.episodes=data)
   }
 
 }

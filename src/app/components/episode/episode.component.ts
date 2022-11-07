@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IEpisode} from "../../interfaces/episode.interface";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-episode',
@@ -11,12 +12,10 @@ export class EpisodeComponent implements OnInit {
   @Input()
   episod:IEpisode
 
-  constructor() { }
+  constructor(private router:Router,private activeRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
   }
 
-  getCharacters() {
 
-  }
 }

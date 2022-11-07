@@ -1,0 +1,10 @@
+.pagination{
+  display: flex;
+  list-style-type: none;
+}
+.infos{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-around;
+}

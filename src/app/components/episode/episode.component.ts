@@ -12,7 +12,7 @@ export class EpisodeComponent implements OnInit {
   @Input()
   episod:IEpisode
 
-  constructor(private router:Router,private activeRoute:ActivatedRoute) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

@@ -1,6 +1,6 @@
-<div *ngIf="episodes.results">
-  <app-episode *ngFor="let episod of episodes.results" [episod]="episod"></app-episode>
-</div>
+
+<app-episode *ngFor="let episod of episodes.results" [episod]="episod"></app-episode>
+
 <ul class="pagination" *ngIf="pages">
   <li *ngFor="let p of pages" [ngClass]="{'active':(p===currentpage)}">
     <button (click)="getEpisodes(p)">{{p}}</button>

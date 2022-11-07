@@ -10,6 +10,7 @@ import { EpisodeComponent } from './components/episode/episode.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatPaginatorModule} from "@angular/material/paginator";
+import { EpisodeCharactersComponent } from './components/episode-characters/episode-characters.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     LayoutComponent,
     HeaderComponent,
     EpisodesComponent,
-    EpisodeComponent
+    EpisodeComponent,
+    EpisodeCharactersComponent
   ],
   imports: [
     BrowserModule,

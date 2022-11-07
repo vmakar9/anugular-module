@@ -16,4 +16,7 @@ export class EpisodeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getCharacters() {
+
+  }
 }
